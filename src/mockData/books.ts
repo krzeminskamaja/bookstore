@@ -1,0 +1,10 @@
+export const books = ["The Enchanted Forest",
+"Mystery of the Old Mansion",
+"Journey to the Unknown",
+"The Lost City",
+"Adventures in Time",
+"The Secret Garden",
+"Tales of the Ancient World",
+"The Hidden Treasure",
+"Legends of the Sea",
+"The Forgotten Realm"]
