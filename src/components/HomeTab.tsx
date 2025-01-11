@@ -26,7 +26,7 @@ function HomeTab() {
     };
 
   React.useEffect(()=>{
-    setFilteredBooks(books.filter(books => books.includes(searchTerm)))
+    setFilteredBooks(books.filter(book => book.title.includes(searchTerm)))
     handleSearch(null);
   },[searchTerm])
 
@@ -77,10 +77,10 @@ function HomeTab() {
                 </Typography>
                 </Grow>
       <List sx={{marginTop:"5%", display:"block"}}>
-        {searchTerm==""?newestFinds.map((book:string)=>(
-          <ListItem sx={{display:"block"}}>{book}</ListItem>
-        )) : filteredBooks.map((book:string)=>(
-          <ListItem sx={{display:"block"}}>{book}</ListItem>
+        {searchTerm==""?newestFinds.map((book:any)=>(
+          <ListItem sx={{display:"block"}}>{book.title}</ListItem>
+        )) : filteredBooks.map((book:any)=>(
+          <ListItem sx={{display:"block"}}>{book.title}</ListItem>
         ))}
       </List>
       </Card>
