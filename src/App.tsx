@@ -1,8 +1,5 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import IconTabs from './IconTabs';
-import LabTabs from './IconTabs copy';
+import IconTabs from './components/IconTabs';
 
 function App() {
   return (
