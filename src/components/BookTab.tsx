@@ -4,6 +4,10 @@ import { mainTheme } from '../styles/theme';
 import React from 'react';
 import { books } from '../mockData/books';
 import BookDetail from './BookDetail';
+import StyledCard from './StyledCard';
+import Title from './Title';
+import StyledButtonGroup from './StyledButtonGroup';
+import StyledTypography from './StyledTypography';
 
 function BookTab() {
     const [selectedBook,setSelectedBook] = React.useState({id:0,title:"",author:"",year:0});
@@ -17,19 +21,27 @@ function BookTab() {
 
   return (
     <Container sx={{ height: '100%' }} >
-      <Card sx={{marginTop:'10%', marginBottom:"20%",background:mainTheme.palette.primary.main,display:'flex',boxShadow:2,width:"100%"}} >
-      <ButtonGroup orientation='vertical' sx={{marginTop:"5%", display:"flex",flexDirection:"column",width:"100%"}}>
-        {selectedBook?.year!=0 ?
-        <Card>
-            <BookDetail id={selectedBook.id} title={selectedBook.title} author={selectedBook.author} year={selectedBook.year}/>
-            <Button onClick={()=>setSelectedBook({id:0,title:"",author:"",year:0})}>Close</Button>
-            </Card> : <ButtonGroup orientation='vertical' sx={{marginTop:"5%", display:"flex",flexDirection:"column",width:"100%"}}>{books.map((book:any)=>(
-          <Button key={book.id} onClick={handleOnClick}>
-                <Typography color={mainTheme.palette.primary.light}>{book.title}</Typography>
-            </Button>
-        )) }</ButtonGroup>}
-      </ButtonGroup>
-      </Card>
+      <Title/>
+      <StyledCard marginBottomValue='50%'>
+      <StyledTypography>All books</StyledTypography>
+      <StyledButtonGroup>
+        {
+            selectedBook?.year!=0 ?
+                <Card>
+                    <BookDetail id={selectedBook.id} title={selectedBook.title} author={selectedBook.author} year={selectedBook.year}/>
+                    <Button onClick={()=>setSelectedBook({id:0,title:"",author:"",year:0})}>Close</Button>
+                </Card> 
+                : 
+                <StyledButtonGroup>
+                    {books.map((book:any)=>(
+                        <Button key={book.id} onClick={handleOnClick}>
+                            <Typography color={mainTheme.palette.primary.light}>{book.title}</Typography>
+                        </Button>
+                    )) }
+                </StyledButtonGroup>
+        }
+      </StyledButtonGroup>
+      </StyledCard>
     </Container>
   );
 }
